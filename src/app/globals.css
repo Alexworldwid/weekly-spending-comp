@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+:root {
+  --Soft-red: hsl(10, 79%, 65%);
+ --Cyan: hsl(186, 34%, 60%);
+ --Dark-brown: hsl(25, 47%, 15%);
+ --Medium-brown: hsl(28, 10%, 53%);
+ --Cream: hsl(27, 66%, 92%);
+ --Very-pale-orange: hsl(33, 100%, 98%);
+}
+
+.body {
+ font-family: "DM Sans", sans-serif;
+ background-color: var(--Cream);
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ min-height: 100vh;
+ width: 100%;
+}
+.main { 
+  width: 90%;
+  min-width: 375px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.balance {
+  background-color: var(--Soft-red);
+  min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.spending {
+  background-color: white;
+  min-width: 100%;
+  border-radius: 20px;
+  padding: 20px;
+}
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.bar-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  min-width: 100%;
+}
+.bar {
+  min-width: 100%;
+}
+
+
+
+@media only screen and (min-width: 600px) {
+  .main {
+    max-width: 700px;
+  }
+}
