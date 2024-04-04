@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect, } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { 
@@ -24,25 +25,22 @@ import {
 export default function Barchart() {
     const [jsonData, setJsonData] = useState([]);
 
-   // Fetch the data
-   useEffect(() => {
-    fetch('https://alexworldwid.github.io/weekly-spending-component/public/data.json')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => { 
-        console.log('fetch data:', data)
-        setJsonData(data);
-    })
-    .catch(error => console.error('Error fetching data:', error));
-    }, []);
+    useEffect( () => {
+        const fetchData = async () => {
+            try {
+              const response = await fetch('../api');
+              const jsonData = await response.json();
+              setJsonData(jsonData);
+            } catch (error) {
+              console.error('Error fetching data:', error);
+            }
+          };
+
+          fetchData();
+    }, [])
 
     // prepare the barchart data
     const prepareChartData = (jsonData) => {
-        const dataArray = jsonData.data;
         const today = new Date().toLocaleDateString('en-US', {weekday: 'short'}).toLowerCase();
         const labels = jsonData.map(entry => entry.day);
         const data = jsonData.map(entry => entry.amount);
@@ -93,4 +91,4 @@ export default function Barchart() {
         </div>
      );
 }
- 
+
